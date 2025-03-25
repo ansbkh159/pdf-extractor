@@ -1,0 +1,5 @@
+setup.py
+src/pdf_extraction.egg-info/PKG-INFO
+src/pdf_extraction.egg-info/SOURCES.txt
+src/pdf_extraction.egg-info/dependency_links.txt
+src/pdf_extraction.egg-info/top_level.txt

@@ -4,6 +4,7 @@ import io
 import fitz
 
 def ocr_page(page, doc, dpi=300):
+    print("OCR Fallback to page:", page)
     try:
         zoom = dpi / 72
         matrix = fitz.Matrix(zoom, zoom)

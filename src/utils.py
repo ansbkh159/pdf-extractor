@@ -42,7 +42,7 @@ def verify_extraction_completeness(doc, extracted_text_pages, extracted_images, 
     return True, "All content extracted successfully"
 
 def normalize_text(text):
-    return " ".join(text.lower().split())
+    return " ".join(text.lower().strip().split())
 
 def bbox_overlap(bbox1, bbox2, threshold=0.5):
     x1, y1, x2, y2 = bbox1
@@ -55,3 +55,13 @@ def bbox_overlap(bbox1, bbox2, threshold=0.5):
     area1 = (x2 - x1) * (y2 - y1)
     
     return intersection > (area1 * threshold)
+
+def text_match(text1, text2, threshold=0.9):
+    norm1 = normalize_text(text1)
+    norm2 = normalize_text(text2)
+    
+    if norm1 == norm2:
+        return True
+    from difflib import SequenceMatcher
+    ratio = SequenceMatcher(None, norm1, norm2).ratio()
+    return ratio >= threshold
